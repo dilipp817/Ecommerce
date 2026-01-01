@@ -1,12 +1,15 @@
 package com.dev.smartpos.service
 
-import com.dev.smartpos.ProductDTO
+import com.dev.smartpos.domain.product.Product
+import com.dev.smartpos.dto.product.CreateProductRequest
+import com.dev.smartpos.dto.product.ProductResponse
+import com.dev.smartpos.dto.product.UpdateProductRequest
 import java.util.*
 
 interface ProductService {
-    fun getAllProducts(): MutableList<ProductDTO?>?
-    fun getProductById(id: Long): Optional<ProductDTO?>?
-    fun saveProduct(productDTO: ProductDTO): ProductDTO?
-    fun updateProduct(id: Long, productDTO: ProductDTO?): ProductDTO?
-    fun deleteProduct(id: Long)
+    fun getAllProducts(): MutableList<ProductResponse>
+    fun getProductById(id: UUID): Product?
+    fun saveProduct(request: CreateProductRequest): Product
+    fun updateProduct(id: UUID, request: UpdateProductRequest): Product
+    fun deleteProduct(id: UUID)
 }
